@@ -1,6 +1,6 @@
 {
   "name": "ts-aws-log-lib",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "A TS metric/log/trace/event library for AWS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
