@@ -1,0 +1,41 @@
+{
+  "name": "ts-aws-log-lib",
+  "version": "0.1",
+  "description": "A TS metric/log/trace/event library for AWS",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "devDependencies": {
+    "@types/jest": "25.1.x",
+    "jest": "25.1.x",
+    "prettier": "1.19.x",
+    "ts-jest": "25.2.x",
+    "ts-node": "8.6.x",
+    "tslint": "6.1.x",
+    "tslint-config-prettier": "1.18.x",
+    "typescript": "3.8.x"
+  },
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "postversion": "git push && git push --tags",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "test": "jest --config jestconfig.json",
+    "version": "npm run format && git add -A src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rwaterman/ts-lib-starter.git"
+  },
+  "keywords": [
+    "TypeScript",
+    "Starter"
+  ],
+  "author": "Rick Waterman",
+  "license": "MIT"
+}
