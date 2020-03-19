@@ -9,7 +9,7 @@
   ],
   "devDependencies": {
     "@types/jest": "25.1.x",
-    "@types/node": "10.17.x",
+    "@types/node": "^10.17.17",
     "jest": "25.1.x",
     "prettier": "1.19.x",
     "ts-jest": "25.2.x",
@@ -39,5 +39,8 @@
   ],
   "author": "Rick Waterman",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13"
+  }
 }
