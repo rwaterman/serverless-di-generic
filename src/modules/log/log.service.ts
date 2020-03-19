@@ -1,9 +1,11 @@
 import { Types } from './models/types';
-import { inject } from 'inversify';
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import { ILogger } from './models/interfaces';
 
-export class LogService {
-  constructor(@inject(Types.LoggerBasic) private logger: ILogger) {
+@injectable()
+export class LogService implements ILogger {
+  constructor(@inject(Types.Logger) public logger: ILogger) {
   }
 
   public info(msg: string): void {
