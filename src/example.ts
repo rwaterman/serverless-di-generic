@@ -13,11 +13,14 @@ export async function example(event: any, context: Context) {
   try {
     logger.info('Listing the contents of the bucket');
     // tslint:disable-next-line:no-console
-    console.log(await storage.list());
+    await storage.list();
 
-    return true;
+    // tslint:disable-next-line:no-console
+    console.log('Returning success');
+    return { statusCode: 200, body: JSON.stringify({}) };
   } catch (err) {
-    logger.error(err);
+    // tslint:disable-next-line:no-console
+    console.error(err.message);
     throw err;
   }
 }
