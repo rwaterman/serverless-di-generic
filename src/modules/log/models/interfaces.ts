@@ -1,8 +1,19 @@
+import { IService } from '../../trace/x-ray.service';
+
 export interface ILogger {
   debug?(msg: string): void;
   error(err: Error): void;
   info(msg: string): void;
   warn?(msg: string): void;
+}
+
+export interface IStorage {
+  list(): any;
+  getClient(): any
+}
+
+// tslint:disable-next-line:no-empty-interface
+export interface ITrace {
 }
 
 export enum LSService {

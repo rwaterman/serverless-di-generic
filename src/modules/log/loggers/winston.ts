@@ -6,7 +6,6 @@ import { LoggerBase } from './base';
 import * as logform from 'logform';
 import * as Transport from 'winston-transport';
 import { logFormat, logLevel } from '../models/defaults';
-import { Types } from '../models/types';
 
 @injectable()
 export class Winston extends LoggerBase implements ILogger {
@@ -30,6 +29,8 @@ export class Winston extends LoggerBase implements ILogger {
   }
 
   public error(err: Error) {
+    // tslint:disable-next-line:no-console
+    console.log(err.message);
     this.logger.error(err);
   }
 

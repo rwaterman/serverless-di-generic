@@ -1,6 +1,7 @@
-import { logExample } from './logExample';
+import { example } from './example';
+import * as cleanStack from 'clean-stack';
+import { Context } from 'aws-lambda';
 
-// @ts-ignore
-export async function handlerExample(event, context) {
-  return logExample(event, context);
+export async function handlerExample(event: any, context: Context) {
+  return example(event, context);
 }
