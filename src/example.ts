@@ -1,11 +1,10 @@
-import { Context } from 'aws-lambda';
 import { LogService } from './modules/log/log.service';
-import { injector } from './inversify.config';
+import { injector } from '../config/inversify.config';
 import { ILogger, IStorage, ITrace } from './modules/log/models/interfaces';
 import { StorageService } from './modules/storage/storage.service';
 import { TraceService } from './modules/trace/trace.service';
 
-export async function example(event: any, context: Context) {
+export async function example(...providerArgs: any[]) {
   const logger = injector.resolve<ILogger>(LogService);
   const storage = injector.resolve<IStorage>(StorageService);
   const trace = injector.resolve<ITrace>(TraceService);

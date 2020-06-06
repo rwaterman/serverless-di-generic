@@ -6,10 +6,13 @@
     "declaration": true,
     "outDir": ".build",
     "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "sourceMap": true, // Source maps for Webpack
     "types": ["reflect-metadata", "@types/node"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["/node_modules/", "**/__tests__/*"]
 }

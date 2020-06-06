@@ -1,8 +1,15 @@
-service: lunch-and-learn-logger
+service: di-generic-serverless
 frameworkVersion: ">=1.34.0 <2.0.0"
 
 plugins:
-  - serverless-plugin-typescript
+  - serverless-webpack
+  - serverless-offline # serverless-offline needs to be last in the list
+
+package:
+  include:
+    - src/**/*.ts
+  exclude:
+    - src/**/*.spec.(t|j)s
 
 custom:
   webpack:
@@ -10,14 +17,12 @@ custom:
     includeModules:
       forceExclude:
         - aws-sdk
-package:
-  include:
-    - src/
-  exclude:
-    - src/**/*.spec.(t|j)s
+    excludeFiles: ["**/*.spec.ts", "**/*.spec.js"]
 
 provider:
   name: aws
+  stage: ${opt:stage}
+  region: ${opt:region}
   runtime: nodejs10.x
   tracing:
     apiGateway: true
@@ -31,9 +36,10 @@ provider:
         - xray:PutTraceSegments
         - xray:PutTelemetryRecords
       Resource: "*"
+
 functions:
   example:
-    handler: src/handlers.handlerExample
+    handler: src/handlers/handlers.exampleAWS
     memorySize: 512
     timeout: 30
     events:

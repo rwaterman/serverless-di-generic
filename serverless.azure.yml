@@ -1,0 +1,35 @@
+service: di-generic-serverless-azure
+frameworkVersion: ">=1.34.0 <2.0.0"
+
+plugins:
+  - serverless-azure-functions
+  - serverless-offline
+  - serverless-webpack
+
+package:
+  include:
+    - src/**/*.*
+  exclude:
+    - src/**/*.spec.(t|j)s
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules:
+      forceExclude:
+        aws-sdk
+    excludeFiles: ["**/*.spec.ts", "**/*.spec.js"]
+
+provider:
+  name: azure
+  stage: ${opt:stage}
+  region: ${opt:region}
+  runtime: nodejs10
+
+functions:
+  example:
+    handler: ./src/handlers/handlers.example
+    events:
+      - http:
+        path: example
+        method: get

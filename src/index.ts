@@ -1,4 +1,4 @@
-import { injector } from './inversify.config';
+import { injector } from '../config/inversify.config';
 import { LogService } from './modules/log/log.service';
 import { ILogger } from './modules/log/models/interfaces';
 
